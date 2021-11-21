@@ -24,13 +24,13 @@
             <td>Действие</td>
         </tr>
         <tbody>
-        <tr ng-repeat="s in StudentsList">
+        <tr ng-repeat="p in ProductsList">
             <td>{{p.id}}</td>
             <td>{{p.name}}</td>
             <td>
-                <button class="btn btn-primary" ng-click="changeAmount(p.id, -5)">-</button>
-                {{s.amount}}
-                <button class="btn btn-primary" ng-click="changeAmount(p.id, 5)">+</button>
+                <button class="btn btn-primary" ng-click="changeAmount(p.id, -1)">-</button>
+                {{p.amount}}
+                <button class="btn btn-primary" ng-click="changeAmount(p.id, 1)">+</button>
             </td>
             <td>
                 <button class="btn btn-danger" ng-click="deleteProduct(p.id)">Удалить</button>

@@ -4,7 +4,8 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
     $scope.loadProducts = function () {
         $http.get(contextPath + '/products')
             .then(function (response) {
-                $scope.StudentsList = response.data;
+                $scope.ProductsList = response.data;
+                console.log("ok")
             });
     };
 
@@ -20,7 +21,7 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             url: contextPath + '/products/change_amount',
             method: 'GET',
             params: {
-                studentId: productId,
+                id: productId,
                 delta: delta
             }
         }).then(function (response) {
