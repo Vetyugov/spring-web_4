@@ -1,32 +1,32 @@
 angular.module('app', []).controller('indexController', function ($scope, $http) {
     const contextPath = 'http://localhost:8189/app';
 
-    $scope.loadStudents = function () {
-        $http.get(contextPath + '/students')
+    $scope.loadProducts = function () {
+        $http.get(contextPath + '/products')
             .then(function (response) {
                 $scope.StudentsList = response.data;
             });
     };
 
-    $scope.deleteStudent = function (studentId) {
-        $http.get(contextPath + '/students/delete/' + studentId)
+    $scope.deleteProduct = function (productId) {
+        $http.get(contextPath + '/products/delete/' + productId)
             .then(function (response) {
-                $scope.loadStudents();
+                $scope.loadProducts();
             });
     }
 
-    $scope.changeScore = function (studentId, delta) {
+    $scope.changeAmount = function (productId, delta) {
         $http({
-            url: contextPath + '/students/change_score',
+            url: contextPath + '/products/change_amount',
             method: 'GET',
             params: {
-                studentId: studentId,
+                studentId: productId,
                 delta: delta
             }
         }).then(function (response) {
-            $scope.loadStudents();
+            $scope.loadProducts();
         });
     }
 
-    $scope.loadStudents();
+    $scope.loadProducts();
 });
