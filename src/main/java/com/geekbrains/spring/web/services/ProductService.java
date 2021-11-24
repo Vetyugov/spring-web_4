@@ -1,28 +1,28 @@
 package com.geekbrains.spring.web.services;
 
 import com.geekbrains.spring.web.data.Product;
-import com.geekbrains.spring.web.repositories.ProductRepository;
+import com.geekbrains.spring.web.data.ProductDaoImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProductService {
-    private ProductRepository productRepository;
+    private ProductDaoImpl productDao;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductService(ProductDaoImpl productDao) {
+        this.productDao = productDao;
     }
 
-    public List<Product> getAllStudents() {
-        return productRepository.getAllProducts();
+    public List<Product> getAllProducts() {
+        return productDao.findAll();
     }
 
     public void deleteProduct(Long id){
-        productRepository.deleteProduct(id);
+        productDao.deleteProduct(id);
     }
 
     public void changeAmountForProduct(Long id, Integer delta) {
-        productRepository.findById(id).setAmount(delta);
+        productDao.updateAmountById(id, delta);
     }
 }

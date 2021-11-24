@@ -17,7 +17,8 @@ public class ProductsController {
 
     @GetMapping("/products")
     public List<Product> getAllProducts (){
-        return productService.getAllStudents();
+        System.out.println("Запрос получен на обновление");
+        return productService.getAllProducts();
     }
 
     @GetMapping("/products/delete/{id}")
@@ -27,6 +28,7 @@ public class ProductsController {
 
     @GetMapping("/products/change_amount")
     public void changeAmount(@RequestParam Long id, @RequestParam Integer delta){
+        System.out.println("Запрос получен" + id + "   " + delta);
         productService.changeAmountForProduct(id, delta);
     }
 }
